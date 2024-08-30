@@ -1,0 +1,16 @@
+{
+  "name": "ecommerce-node-api",
+  "version": "1.0.0",
+  "description": "Este é um projeto de um ecommercer para aprendigem de POO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cleilson Alvino",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.2.0",
+    "sucrase": "^3.35.0",
+    "typescript": "^5.5.4"
+  }
+}
