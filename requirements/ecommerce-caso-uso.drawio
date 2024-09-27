@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="kMQABw-Oj0Bmc2t55qia" name="Visão Geral - Domínio">
-        <mxGraphModel dx="1090" dy="787" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1350" dy="790" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -64,9 +64,6 @@
                         <mxPoint x="210" y="570" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="EfbuNJRbLX5IBR3CsVrC-39" value="" style="edgeStyle=none;html=1;endArrow=none;endFill=0;" parent="1" source="26" target="25" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
                 <mxCell id="26" value="Gerenciar Categoria" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="350" y="510" width="350" height="70" as="geometry"/>
                 </mxCell>
@@ -74,7 +71,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="xMuBiLkuwxsoKvly10kU" name="Subdomínio - Catálogo">
-        <mxGraphModel dx="1090" dy="787" grid="1" gridSize="12" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1700" background="none" math="0" shadow="0">
+        <mxGraphModel dx="1620" dy="948" grid="1" gridSize="12" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1700" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>

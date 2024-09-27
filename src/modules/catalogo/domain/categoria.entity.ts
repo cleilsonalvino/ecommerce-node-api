@@ -1,5 +1,6 @@
 
 import { CriarCategoriaProps, Icategoria } from "./categoria.types";
+    import { NomeCategoriaNuloOuIndefinido,  NomeCategoriaTamanhoMaximoInvalido, NomeCategoriaTamanhoMinimoInvalido} from "./categoria.exception";
 
 class Categoria implements Icategoria {
     ///////////////////////
@@ -27,15 +28,15 @@ class Categoria implements Icategoria {
     private set nome(value: string){
 
         if(value === null || value === undefined){
-            throw Error('Nome da categoria é nulo ou indefinido!')
+            throw new NomeCategoriaNuloOuIndefinido
         }
 
         if(value.trim().length < 3){
-            throw Error('Nome da categoria não possui um tamanho mínimo válido')
+            throw new NomeCategoriaTamanhoMinimoInvalido
         }
 
         if(value.trim().length > 50){
-            throw Error('Nome da categoria não possui um tamanho máximo válido')
+            throw new NomeCategoriaTamanhoMaximoInvalido
         }
         
         this._nome = value.trim()
