@@ -1,6 +1,7 @@
 
 import { CriarCategoriaProps, Icategoria } from "./categoria.types";
     import { NomeCategoriaNuloOuIndefinido,  NomeCategoriaTamanhoMaximoInvalido, NomeCategoriaTamanhoMinimoInvalido} from "./categoria.exception";
+import { randomUUID } from "crypto";
 
 class Categoria implements Icategoria {
     ///////////////////////
@@ -39,7 +40,7 @@ class Categoria implements Icategoria {
             throw new NomeCategoriaTamanhoMaximoInvalido
         }
         
-        this._nome = value.trim()
+        this._nome = value;
     }
 
     //Construtor
@@ -52,7 +53,7 @@ class Categoria implements Icategoria {
     //Static Factory Method
 
     public static criar(props: CriarCategoriaProps): Categoria{
-        let id = "12345"; //refatorar para gerar automatico futuramente
+        let id = randomUUID(); //refatorar para gerar automatico futuramente
         let { nome } = props;
         return new Categoria({id, nome})
     }
