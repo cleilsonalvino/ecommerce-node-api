@@ -1,63 +1,70 @@
-
-import { CriarCategoriaProps, Icategoria } from "./categoria.types";
-    import { NomeCategoriaNuloOuIndefinido,  NomeCategoriaTamanhoMaximoInvalido, NomeCategoriaTamanhoMinimoInvalido} from "./categoria.exception";
+import { ICategoria, CriarCategoriaProps, RecuperarCategoriaProps } from "./categoria.types";
+import { NomeCategoriaNuloOuIndefinido, NomeCategoriaTamanhoMinimoInvalido, NomeCategoriaTamanhoMaximoInvalido } from "./categoria.exception";
 import { randomUUID } from "crypto";
+import { Entity } from "../../../shared/domain/entity";
+import { CategoriaMap } from "../mappers/categoria.map";
 
-class Categoria implements Icategoria {
+class Categoria extends Entity<ICategoria> implements ICategoria {
+
     ///////////////////////
-    //Atributos de Classe//
-    ///////////////////////
+	//Atributos de Classe//
+	///////////////////////
 
+	private _nome: string;
 
-    private _id: string;
-    private _nome: string;
-
-    //Gets e Sets
-
-    public get id(): string{
-        return this._id; 
+    ///////////////
+	//Gets e Sets//
+	///////////////
+   
+    public get nome(): string {
+        return this._nome;
     }
 
-    private set id(value: string){
-        this._id = value
-    }
-
-    public get nome(): string{
-        return this._nome
-    }
-
-    private set nome(value: string){
-
-        if(value === null || value === undefined){
-            throw new NomeCategoriaNuloOuIndefinido
+    private set nome(value: string) {
+        if (value === null || value === undefined) {
+            throw new NomeCategoriaNuloOuIndefinido();
         }
 
-        if(value.trim().length < 3){
-            throw new NomeCategoriaTamanhoMinimoInvalido
+        if (value.trim().length < 3) {
+            throw new NomeCategoriaTamanhoMinimoInvalido();
         }
 
-        if(value.trim().length > 50){
-            throw new NomeCategoriaTamanhoMaximoInvalido
+        if (value.trim().length > 50) {
+            throw new NomeCategoriaTamanhoMaximoInvalido();
         }
-        
+
         this._nome = value;
     }
 
-    //Construtor
+    //////////////
+	//Construtor//
+	//////////////
 
-    private constructor(categoria: Icategoria){
-        this._id = categoria.id
-        this.nome = categoria.nome
+    private constructor(categoria:ICategoria){
+        super(categoria.id);
+        this.nome = categoria.nome;
     }
 
-    //Static Factory Method
+    /////////////////////////
+    //Static Factory Method//
+    /////////////////////////
 
-    public static criar(props: CriarCategoriaProps): Categoria{
-        let id = randomUUID(); //refatorar para gerar automatico futuramente
+    public static criar(props: CriarCategoriaProps): Categoria {
         let { nome } = props;
-        return new Categoria({id, nome})
+        return new Categoria({ nome });
     }
 
+    public static recuperar(props: RecuperarCategoriaProps): Categoria {
+        return new Categoria(props);
+    }
+
+    ///////////
+    //Métodos//
+    ///////////
+
+    public toDTO(): ICategoria {
+        return CategoriaMap.toDTO(this);
+    }
 
 }
 

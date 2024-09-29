@@ -1,14 +1,19 @@
-//Todos os atributos/propiedades que uma categoria deve ter no sistema
+//Todos os atributos/propriedades que uma categoria deve ter no sistema
 //Auxilia na criação de invariantes e modelos ricos
-
-interface Icategoria {
-    id: string;
-    nome: string;
+interface ICategoria {
+    id?: string;
+    nome:string;
 }
-
 
 //Atributos que são necessários para criar uma categoria
 //Garantir a integridade dos dados de um objeto
-type CriarCategoriaProps = Omit<Icategoria, "id">
+type CriarCategoriaProps = Omit<ICategoria, "id">;
 
-export { Icategoria, CriarCategoriaProps }
+//Atributos que são necessários para recuperar uma categoria
+type RecuperarCategoriaProps = Required<ICategoria>;
+
+export {
+    ICategoria , 
+    CriarCategoriaProps,
+    RecuperarCategoriaProps
+}
