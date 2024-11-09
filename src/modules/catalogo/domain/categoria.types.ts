@@ -9,4 +9,6 @@ interface ICategoria {
 
 //Atributos que são necessários para criar uma categoria
 //Garantir a integridade dos dados de um objeto
-type CriarCategoriaProps = Omit<ICategoria, "id>">
+type CriarCategoriaProps = Omit<ICategoria, "id">
+
+export {ICategoria, CriarCategoriaProps};
