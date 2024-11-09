@@ -1,34 +1,16 @@
 {
   "name": "ecommerce-node-api",
   "version": "1.0.0",
-  "description": "Este é um projeto de um ecommercer para aprendizagem de POO",
+  "description": "Este é um projeto dedico a um ecommerce, usando praticas de POO",
+  "main": "index.js",
   "scripts": {
-    "test": "vitest",
-    "test:run": "vitest run",
-    "test:ui": "vitest --ui"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "processo de desenvolvimento software",
-    "aplicações WEB",
-    "API",
-    "principios e padroes de arquitetura",
-    "principios e padroes de projeto",
-    "testes automatizados",
-    "boas práticas",
-    "typescript",
-    "node",
-    "acadêmico",
-    "ifs",
-    "programação II",
-    "programação III"
-  ],
-  "author": "Cleilson Alvino",
+  "author": "Cleilson alvino",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.3.3",
-    "@vitest/ui": "^0.33.0",
-    "sucrase": "^3.32.0",
-    "typescript": "^5.1.6",
-    "vitest": "^0.33.0"
+    "@types/node": "^22.8.6",
+    "sucrase": "^3.35.0",
+    "typescript": "^5.6.3"
   }
 }
