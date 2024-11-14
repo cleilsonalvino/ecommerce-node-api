@@ -1,65 +1,46 @@
-import { ICategoria, CriarCategoriaProps } from "./categoria.types";
-
-class Categoria implements ICategoria {
-
-    ///////////////////////
-	//Atributos de Classe//
-	///////////////////////
-
-    private _id: string;
-	private _nome: string;
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Categoria = void 0;
+class Categoria {
     ///////////////
-	//Gets e Sets//
-	///////////////
-
-    public get id(): string {
+    //Gets e Sets//
+    ///////////////
+    get id() {
         return this._id;
     }
-
-    private set id(value: string) {
+    set id(value) {
         this._id = value;
     }
-
-    public get nome(): string {
+    get nome() {
         return this._nome;
     }
-
-    private set nome(value: string) {
+    set nome(value) {
         if (value === null || value === undefined) {
             throw new Error(`${value} é nulo ou indefinido.`);
         }
-
         if (value.trim().length < 3) {
             throw new Error(`O nome da categoria não possui um tamanho mínimo válido.`);
         }
-
         if (value.trim().length > 50) {
             throw new Error(`O nome da categoria não possui um tamanho máximo válido.`);
         }
-
         this._nome = value;
     }
-
     //////////////
-	//Construtor//
-	//////////////
-
-    private constructor(categoria:ICategoria){
+    //Construtor//
+    //////////////
+    constructor(categoria) {
         this.id = categoria.id;
         this.nome = categoria.nome;
     }
-
     /////////////////////////
     //Static Factory Method//
     /////////////////////////
-
-    public static criar(props: CriarCategoriaProps): Categoria {
+    static criar(props) {
         let id = "12345"; //Refatorar para gerar id com UUID
         let { nome } = props;
-        return new Categoria({id, nome});
+        return new Categoria({ id, nome });
     }
-
 }
-
-export { Categoria }
+exports.Categoria = Categoria;
+//# sourceMappingURL=categoria.entity.js.map
