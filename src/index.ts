@@ -1,7 +1,7 @@
 import { Categoria } from "./modules/catalogo/domain/categoria.entity";
 
 try {
-    let categoria = Categoria.criar({nome:'cama'});
+    let categoria = Categoria.criar({nome:'ma'});
     console.log(categoria);
 } 
 catch (error:any) {
