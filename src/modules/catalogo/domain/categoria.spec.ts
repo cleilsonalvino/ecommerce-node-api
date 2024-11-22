@@ -1,38 +1,116 @@
-import { escape } from "querystring";
-import { Categoria } from "./categoria.entity";
-import { NomeCategoriatamanhoMaximoInvalido, NomeCategoriatamanhoMinimoInvalido } from "./categoria.exception";
-import { CriarCategoriaProps } from "./categoria.types";
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from 'vitest';
+import { CriarCategoriaProps, RecuperarCategoriaProps } from './categoria.types';
+import { Categoria } from './categoria.entity';
+import { NomeCategoriatamanhoMaximoInvalido, NomeCategoriatamanhoMinimoInvalido } from './categoria.exception';
+import { IDEntityUUIDInvalid } from '../../../shared/domain/domain.exeption'; 
 
-//Suite de testes de unidade
+//Suite de Testes de Unidade - Entidade de Domínio
+//Usando a descrição, você pode definir como um conjunto de testes ou benchmarks relacionados
+describe('Entidade de Domínio: Criar Categoria', () => {
 
-describe('Entidade de Domínio: Categoria', ()=>{
+    //Teste define um conjunto de expectativas relacionadas. 
+    test('Deve Criar Uma Categoria Válida', async () => {
 
-    
-    test('Deve criar uma categoria válida', async ()=>{
-        //categoria válida
-
+        //Dado (Given)
         const categoriaValida: CriarCategoriaProps = {
             nome: 'cama'
         };
 
-        //Quando
+        //Quando (When) e Então (Then)
+        expect(Categoria.criar(categoriaValida))
+            .to.be.instanceof(Categoria);
 
-        expect(Categoria.criar(categoriaValida)).to.be.instanceOf(Categoria)
     });
 
-    test('Categoria com nome inválido(Tamanho mínimo)', async ()=>{
+    test('Não Deve Criar Categoria Com Nome Inválido (Tamanho Mínimo)', async () => {
+
+        //Dado (Given)
+        //Nome menor que três caracteres
         const categoriaNomeInvalido: CriarCategoriaProps = {
             nome: 'ca'
-        }
+        };
 
-        expect(() => Categoria.criar(categoriaNomeInvalido)).toThrowError(NomeCategoriatamanhoMinimoInvalido)
-    })
-    test('Categoria com nome inválido(Tamanho máximo)', async ()=>{
+        //Quando (When) e Então (Then)
+        expect(() => Categoria.criar(categoriaNomeInvalido))
+            .toThrowError(NomeCategoriatamanhoMinimoInvalido);
+
+    });
+
+    test('Não Deve Criar Categoria Com Nome Inválido (Tamanho Máximo)', async () => {
+
+        //Dado (Given)
+        //Nome maior que 50 caracteres
         const categoriaNomeInvalido: CriarCategoriaProps = {
-            nome:'fhkjashfsdfhajkhsfjhasjhfaskdfjhasjdfhakjsdhffasdjhfkjasdhf'
-        }
+            nome: '123456789123456789123456789123456789123456789123456'
+        };
 
-        expect(() => Categoria.criar(categoriaNomeInvalido)).toThrowError(NomeCategoriatamanhoMaximoInvalido)
-    })
-})
+        //Quando (When) e Então (Then)
+        expect(() => Categoria.criar(categoriaNomeInvalido))
+            .toThrowError(NomeCategoriatamanhoMaximoInvalido);
+
+    });
+
+});
+
+describe('Entidade de Domínio: Recupear Categoria', () => {
+
+    test('Deve Recuperar Uma Categoria Válida', async () => {
+
+        //Dado (Given)
+        const categoriaValida: RecuperarCategoriaProps = {
+            id: '5edbc79d-b724-4a39-a29b-0bfb2386920a',
+            nome: 'cama'
+        };
+
+        //Quando (When) e Então (Then)
+        expect(Categoria.recuperar(categoriaValida))
+            .to.be.instanceof(Categoria);
+
+    });
+
+    test('Não Deve Recuperar Categoria Com ID Inválido (UUID Inválido)', async () => {
+
+        //Dado (Given)
+        //Nome menor que três caracteres
+        const categoriaIdInvalido: RecuperarCategoriaProps = {
+            id: '1234',
+            nome: 'cama'
+        };
+
+        //Quando (When) e Então (Then)
+        expect(() => Categoria.recuperar(categoriaIdInvalido))
+            .toThrowError(IDEntityUUIDInvalid);
+
+    });
+
+    test('Não Deve Recuperar Categoria Com Nome Inválido (Tamanho Mínimo)', async () => {
+
+        //Dado (Given)
+        //Nome menor que três caracteres
+        const categoriaNomeInvalido: RecuperarCategoriaProps = {
+            id: '5edbc79d-b724-4a39-a29b-0bfb2386920a',
+            nome: 'ma'
+        };
+
+        //Quando (When) e Então (Then)
+        expect(() => Categoria.recuperar(categoriaNomeInvalido))
+            .toThrowError(NomeCategoriatamanhoMinimoInvalido);
+
+    });
+
+    test('Não Deve Recuperar Categoria Com Nome Inválido (Tamanho Máximo)', async () => {
+
+        //Dado (Given)
+        //Nome maior que 50 caracteres
+        const categoriaNomeInvalido: RecuperarCategoriaProps = {
+            id: '5edbc79d-b724-4a39-a29b-0bfb2386920a',
+            nome: '123456789123456789123456789123456789123456789123456'
+        };
+
+        //Quando (When) e Então (Then)
+        expect(() => Categoria.recuperar(categoriaNomeInvalido))
+            .toThrowError(NomeCategoriatamanhoMaximoInvalido);
+
+    });
+
+});
