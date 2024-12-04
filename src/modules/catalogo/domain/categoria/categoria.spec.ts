@@ -1,8 +1,8 @@
 import { describe, expect, test } from 'vitest';
-import { CriarCategoriaProps, RecuperarCategoriaProps } from './categoria.types';
+import { IDEntityUUIDInvalid } from '../../../../shared/domain/domain.exeption';
 import { Categoria } from './categoria.entity';
 import { NomeCategoriatamanhoMaximoInvalido, NomeCategoriatamanhoMinimoInvalido } from './categoria.exception';
-import { IDEntityUUIDInvalid } from '../../../shared/domain/domain.exeption'; 
+import { CriarCategoriaProps, RecuperarCategoriaProps } from './categoria.types';
 
 //Suite de Testes de Unidade - Entidade de Domínio
 //Usando a descrição, você pode definir como um conjunto de testes ou benchmarks relacionados

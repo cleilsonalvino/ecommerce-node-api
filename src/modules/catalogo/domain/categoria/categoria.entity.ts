@@ -1,8 +1,7 @@
-import { randomUUID } from "crypto";
-import { CategoriaNuloOuIndefinido, NomeCategoriatamanhoMaximoInvalido, NomeCategoriatamanhoMinimoInvalido} from "./categoria.exception";
-import { ICategoria, CriarCategoriaProps, RecuperarCategoriaProps } from "./categoria.types";
-import { Entity } from "../../../shared/domain/entity";
-import { CategoriaMap } from "../mappers/categoria.map";
+import { Entity } from "../../../../shared/domain/entity";
+import { CategoriaMap } from "../../mappers/categoria.map";
+import { CategoriaNuloOuIndefinido, NomeCategoriatamanhoMaximoInvalido, NomeCategoriatamanhoMinimoInvalido } from "./categoria.exception";
+import { CriarCategoriaProps, ICategoria, RecuperarCategoriaProps } from "./categoria.types";
 
 class Categoria extends Entity<ICategoria> implements ICategoria {
 
@@ -65,4 +64,4 @@ class Categoria extends Entity<ICategoria> implements ICategoria {
 
 }
 
-export { Categoria }
+export { Categoria };
