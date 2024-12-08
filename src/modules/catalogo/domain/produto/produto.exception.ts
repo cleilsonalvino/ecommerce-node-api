@@ -1,5 +1,4 @@
-import { DomainException } from "../../../../shared/domain/domain.exeption";
-
+import { DomainException } from "@shared/domain/domain.exeption";
 class ProdutoException extends DomainException {
     constructor(message:string = '⚠️ Exceção de Domínio Genérica da Entidade Produto') {
         super(message);

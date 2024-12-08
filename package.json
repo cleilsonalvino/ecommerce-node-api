@@ -4,6 +4,7 @@
   "description": "Este é um projeto dedicado a um ecommerce, usando praticas de POO",
   "main": "index.js",
   "scripts": {
+    "dev:console":"node -r tsconfig-paths/register -r sucrase/register src/index.ts",
     "test": "vitest",
     "test:run": "vitest run",
     "test:ui": "vitest --ui"
@@ -15,6 +16,7 @@
     "@types/node": "^22.8.6",
     "@vitest/ui": "^2.1.5",
     "sucrase": "^3.35.0",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.6.3",
     "vitest": "^2.1.5"
   }

@@ -1,4 +1,4 @@
-import { DomainException } from "../../../../shared/domain/domain.exeption";
+import { DomainException } from "@shared/domain/domain.exeption";
 
 class CategoriaException extends DomainException{
     constructor(message:string = 'Exceção de Domínio genérica da entidade Categoria'){

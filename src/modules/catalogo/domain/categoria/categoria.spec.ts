@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, test } from 'vitest';
-import { IDEntityUUIDInvalid } from '../../../../shared/domain/domain.exeption';
+import { IDEntityUUIDInvalid } from '@shared/domain/domain.exeption';
 import { Categoria } from './categoria.entity';
 import { NomeCategoriatamanhoMaximoInvalido, NomeCategoriatamanhoMinimoInvalido } from './categoria.exception';
 import { CriarCategoriaProps, RecuperarCategoriaProps } from './categoria.types';
