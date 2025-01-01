@@ -9,17 +9,22 @@
     "test:run": "vitest run",
     "test:ui": "vitest --ui"
   },
+  "prisma": {
+    "schema": "./src/main/infra/database/orm/prisma/schema.prisma"
+  },
   "author": "Cleilson alvino",
   "license": "ISC",
   "devDependencies": {
     "@faker-js/faker": "^9.3.0",
     "@types/node": "^22.8.6",
     "@vitest/ui": "^2.1.5",
-    "node": "^23.5.0",
-    "npm": "^11.0.0",
+    "prisma": "^6.1.0",
     "sucrase": "^3.35.0",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.6.3",
     "vitest": "^2.1.5"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.1.0"
   }
 }
