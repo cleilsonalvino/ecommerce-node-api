@@ -141,6 +141,7 @@ async function main() {
 	// const produtoDeletado: boolean = await produtoRepo.deletar("047c0640-3814-4c44-8fb5-c02cba0334f3");
 
 	// console.log(produtoDeletado);
+    
 }
 
 main()
