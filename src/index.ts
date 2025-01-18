@@ -116,7 +116,7 @@ async function main() {
 	//Recuperar Todos os Produtos e Suas Categorias//
 	/////////////////////////////////////////////////
 		
-	const todosProdutos: Array<Produto> = await produtoRepo.recuperarTodos();
+	//const todosProdutos: Array<Produto> = await produtoRepo.recuperarTodos();
 
 	// console.log(todosProdutos);
 
