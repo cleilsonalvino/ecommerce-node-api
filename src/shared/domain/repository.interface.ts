@@ -1,4 +1,4 @@
-interface IQuery<T>{
+interface IQuery<T> {
     recuperarPorUuid(uuid: string): Promise<T | null>;
     recuperarTodos(): Promise<Array<T>>;
     existe(uuid: string): Promise<boolean>;

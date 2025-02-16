@@ -38,9 +38,15 @@ model Produto {
   descricao         String   @db.VarChar(200)
   valor             Int
   dataCriacao       DateTime @default(now()) @map("data_criacao")
-  dataAtualizacao   DateTime @updatedAt @map("data_atualizaco")
+  dataAtualizacao   DateTime @updatedAt @map("data_atualizacao")
   dataExclusao      DateTime? @map("data_exclusao")
+  status            StatusProdutoPrisma @default(ATIVO) @map("status_produto")
   categorias        ProdutosCategorias[]
 
   @@map("produtos")
+}
+
+enum StatusProdutoPrisma {
+  ATIVO
+  DESATIVO
 }

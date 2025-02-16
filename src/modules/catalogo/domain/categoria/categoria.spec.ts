@@ -1,9 +1,9 @@
+import { faker } from '@faker-js/faker';
+import { IDEntityUUIDInvalid } from '@shared/domain/domain.exception';
 import { beforeAll, describe, expect, test } from 'vitest';
-import { IDEntityUUIDInvalid } from '@shared/domain/domain.exeption';
 import { Categoria } from './categoria.entity';
-import { NomeCategoriatamanhoMaximoInvalido, NomeCategoriatamanhoMinimoInvalido } from './categoria.exception';
+import { NomeCategoriaTamanhoMaximoInvalido, NomeCategoriaTamanhoMinimoInvalido } from './categoria.exception';
 import { CriarCategoriaProps, RecuperarCategoriaProps } from './categoria.types';
-import {faker} from "@faker-js/faker"
 
 let nomeCategoriaValido: string;
 let nomeCategoriaTamanhoMinInvalido: string;
@@ -11,6 +11,7 @@ let nomeCategoriaTamanhoMaxInvalido: string;
 let UUIDValido: string;
 let UUIDInvalido: string;
 
+//Chamado uma vez antes de iniciar a execução de todos os testes no contexto atual.
 beforeAll(async () => {
 
     //Preencendo as variáveis com dados em conformidade com as restrições da regra de negócio
@@ -34,8 +35,6 @@ describe('Entidade de Domínio: Criar Categoria', () => {
             nome: nomeCategoriaValido
         };
 
-        console.log(categoriaValida)
-
         //Quando (When) e Então (Then)
         expect(Categoria.criar(categoriaValida))
             .to.be.instanceof(Categoria);
@@ -47,12 +46,12 @@ describe('Entidade de Domínio: Criar Categoria', () => {
         //Dado (Given)
         //Nome menor que três caracteres
         const categoriaNomeInvalido: CriarCategoriaProps = {
-            nome: 'ca'
+            nome: nomeCategoriaTamanhoMinInvalido
         };
 
         //Quando (When) e Então (Then)
         expect(() => Categoria.criar(categoriaNomeInvalido))
-            .toThrowError(NomeCategoriatamanhoMinimoInvalido);
+            .toThrowError(NomeCategoriaTamanhoMinimoInvalido);
 
     });
 
@@ -61,25 +60,25 @@ describe('Entidade de Domínio: Criar Categoria', () => {
         //Dado (Given)
         //Nome maior que 50 caracteres
         const categoriaNomeInvalido: CriarCategoriaProps = {
-            nome: '123456789123456789123456789123456789123456789123456'
+            nome: nomeCategoriaTamanhoMaxInvalido
         };
 
         //Quando (When) e Então (Then)
         expect(() => Categoria.criar(categoriaNomeInvalido))
-            .toThrowError(NomeCategoriatamanhoMaximoInvalido);
+            .toThrowError(NomeCategoriaTamanhoMaximoInvalido);
 
     });
 
 });
 
-describe('Entidade de Domínio: Recupear Categoria', () => {
+describe('Entidade de Domínio: Recuperar Categoria', () => {
 
     test('Deve Recuperar Uma Categoria Válida', async () => {
 
         //Dado (Given)
         const categoriaValida: RecuperarCategoriaProps = {
-            id: '5edbc79d-b724-4a39-a29b-0bfb2386920a',
-            nome: 'cama'
+            id: UUIDValido,
+            nome: nomeCategoriaValido
         };
 
         //Quando (When) e Então (Then)
@@ -93,8 +92,8 @@ describe('Entidade de Domínio: Recupear Categoria', () => {
         //Dado (Given)
         //Nome menor que três caracteres
         const categoriaIdInvalido: RecuperarCategoriaProps = {
-            id: '1234',
-            nome: 'cama'
+            id: UUIDInvalido,
+            nome: nomeCategoriaValido
         };
 
         //Quando (When) e Então (Then)
@@ -108,13 +107,13 @@ describe('Entidade de Domínio: Recupear Categoria', () => {
         //Dado (Given)
         //Nome menor que três caracteres
         const categoriaNomeInvalido: RecuperarCategoriaProps = {
-            id: '5edbc79d-b724-4a39-a29b-0bfb2386920a',
-            nome: 'ma'
+            id: UUIDValido,
+            nome: nomeCategoriaTamanhoMinInvalido
         };
 
         //Quando (When) e Então (Then)
         expect(() => Categoria.recuperar(categoriaNomeInvalido))
-            .toThrowError(NomeCategoriatamanhoMinimoInvalido);
+            .toThrowError(NomeCategoriaTamanhoMinimoInvalido);
 
     });
 
@@ -123,13 +122,13 @@ describe('Entidade de Domínio: Recupear Categoria', () => {
         //Dado (Given)
         //Nome maior que 50 caracteres
         const categoriaNomeInvalido: RecuperarCategoriaProps = {
-            id: '5edbc79d-b724-4a39-a29b-0bfb2386920a',
-            nome: '123456789123456789123456789123456789123456789123456'
+            id: UUIDValido,
+            nome: nomeCategoriaTamanhoMaxInvalido
         };
 
         //Quando (When) e Então (Then)
         expect(() => Categoria.recuperar(categoriaNomeInvalido))
-            .toThrowError(NomeCategoriatamanhoMaximoInvalido);
+            .toThrowError(NomeCategoriaTamanhoMaximoInvalido);
 
     });
 

@@ -1,16 +1,22 @@
 import { randomUUID } from "crypto";
-import { an } from "vitest/dist/chunks/reporters.D7Jzd9GS";
-import { IDEntityUUIDInvalid } from "./domain.exeption";
+import { IDEntityUUIDInvalid } from "./domain.exception";
 
-const isEntity = (v: any): v is Entity<any> =>{
+//Método que verifica se é a instância de uma entidade
+const isEntity = (v: any): v is Entity<any> => {
     return v instanceof Entity;
-}
+};
 
-abstract class Entity<T>{
-    //atributos
-    private _id: string;
+abstract class Entity<T> {
 
-    //gets e sets
+    /////////////
+    //Atributos//
+    /////////////
+
+	private _id: string;
+
+    ///////////////
+    //Gets e Sets//
+    ///////////////
 
     public get id(): string {
         return this._id;
@@ -25,27 +31,31 @@ abstract class Entity<T>{
         this._id = value;
     }
 
-    //construtor
+    //////////////
+    //Construtor//
+    //////////////
 
-    constructor(id?: string){
-        this.id = id ? id : randomUUID()
+    constructor(id?: string) {
+        this.id = id ? id : randomUUID();
     }
 
-    //metodos
+    ///////////
+    //Métodos//
+    ///////////
 
-    public equals(object?: Entity<T>): boolean{
-        if(object == null || object == undefined){
-            return false
+    public equals(object?: Entity<T>): boolean {
+        if (object == null || object == undefined) {
+          return false
         }
-
-        if(this === object){
-            return true
+    
+        if (this === object) {
+          return true
         }
-
-        if(!isEntity(object)){
-            return false
+    
+        if (!isEntity(object)) {
+          return false
         }
-
+    
         return this._id == object._id
     }
 
@@ -53,6 +63,7 @@ abstract class Entity<T>{
         let padraoUUID: RegExp = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
         return padraoUUID.test(UUID);
     } 
+
 }
 
-export {Entity}
+export { Entity }

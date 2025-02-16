@@ -3,8 +3,8 @@ import { ICategoriaRepository } from "@modules/catalogo/domain/categoria/categor
 import { CategoriaMap } from "@modules/catalogo/mappers/categoria.map";
 import { PrismaRepository } from "@shared/infra/database/prisma.repository";
 
-class CategoriaPrismaRepository extends PrismaRepository implements ICategoriaRepository<Categoria>{
-
+class CategoriaPrismaRepository extends PrismaRepository implements ICategoriaRepository<Categoria> {
+   
     async recuperarPorUuid(uuid: string): Promise<Categoria | null> {
         const categoriaRecuperada = await this._datasource.categoria.findUnique(
             {
@@ -22,10 +22,7 @@ class CategoriaPrismaRepository extends PrismaRepository implements ICategoriaRe
     async recuperarTodos(): Promise<Array<Categoria>> {
         const categoriasRecuperadas = await this._datasource.categoria.findMany();
         const categorias = categoriasRecuperadas.map(
-        (categoria) => CategoriaMap.toDomain({
-            id: categoria.id,
-            nome: categoria.nome
-        })
+            (categoria) => CategoriaMap.fromPrismaModelToDomain(categoria)
         );
         return categorias;
     }
@@ -47,7 +44,7 @@ class CategoriaPrismaRepository extends PrismaRepository implements ICategoriaRe
         );
         return categoria;
     }
-    
+
     async atualizar(uuid: string, categoria: Categoria): Promise<boolean> {
         const categoriaAtualizada = await this._datasource.categoria.update(
             {
@@ -70,8 +67,6 @@ class CategoriaPrismaRepository extends PrismaRepository implements ICategoriaRe
         if (categoriaDeletada.id) {return true;}
         return false;
     }
-
 }
 
 export { CategoriaPrismaRepository }
-

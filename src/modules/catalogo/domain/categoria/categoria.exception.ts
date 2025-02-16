@@ -1,40 +1,40 @@
-import { DomainException } from "@shared/domain/domain.exeption";
+import { DomainException } from "@shared/domain/domain.exception";
 
-class CategoriaException extends DomainException{
-    constructor(message:string = 'Exceção de Domínio genérica da entidade Categoria'){
+class CategoriaException extends DomainException {
+    constructor(message:string = '⚠️ Exceção de Domínio Genérica da Entidade Categoria') {
         super(message);
-        this.name = 'CategoriaException';
+        this.name = 'CategoriaException'
         this.message = message;
     }
 }
 
-class CategoriaNuloOuIndefinido extends CategoriaException {
-    constructor(message:string = 'Nome da categoria é nulo ou indefinido'){
+class NomeCategoriaNuloOuIndefinido extends CategoriaException {
+    public constructor(message:string = '⚠️ O nome da categoria é nulo ou indefinido.') {
         super(message);
-        this.name = 'CategoriaNuloOuIndefinido';
+        this.name = 'NomeCategoriaNuloOuIndefinido'
         this.message = message;
     }
 }
 
-class NomeCategoriatamanhoMinimoInvalido extends CategoriaException {
-    constructor(message:string = 'O Nome da categoria não possui o tamanho mínimo válido'){
+class NomeCategoriaTamanhoMinimoInvalido extends CategoriaException {
+    public constructor(message:string = '⚠️ O nome da categoria não possui um tamanho mínimo válido.') {
         super(message);
-        this.name = 'NomeCategoriatamanhoMinimoInvalido';
+        this.name = 'NomeCategoriaTamanhoMinimoInvalido'
         this.message = message;
     }
-} 
+}
 
-class NomeCategoriatamanhoMaximoInvalido extends CategoriaException {
-    constructor(message:string = 'Nome da categoria não possui o tamanho máximo válido'){
+class NomeCategoriaTamanhoMaximoInvalido extends CategoriaException {
+    public constructor(message:string = '⚠️ O nome da categoria não possui um tamanho máximo válido.') {
         super(message);
-        this.name = 'NomeCategoriatamanhoMaximoInvalido';
+        this.name = 'NomeCategoriaTamanhoMaximoInvalido'
         this.message = message;
     }
 }
 
 export {
     CategoriaException,
-    CategoriaNuloOuIndefinido,
-    NomeCategoriatamanhoMaximoInvalido,
-    NomeCategoriatamanhoMinimoInvalido
+    NomeCategoriaNuloOuIndefinido,
+    NomeCategoriaTamanhoMinimoInvalido,
+    NomeCategoriaTamanhoMaximoInvalido
 }
