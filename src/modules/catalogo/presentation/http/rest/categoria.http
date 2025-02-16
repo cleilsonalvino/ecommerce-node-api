@@ -1,0 +1,29 @@
+@host = localhost
+@port = 3000
+@apiversion = api/v1
+
+### Recuperar Um Categoria por ID
+GET http://{{host}}:{{port}}/{{apiversion}}/categorias/ac6c99e0-0759-47c1-89cb-5c6dc6e64852
+
+### Recuperar Todas as Categorias
+GET http://{{host}}:{{port}}/{{apiversion}}/categorias
+
+### Inserir Uma Categoria
+POST http://{{host}}:{{port}}/{{apiversion}}/categorias
+Content-type: application/json
+
+{
+    "nome":"Sala"
+}
+
+### Atualizar Categoria
+PUT http://{{host}}:{{port}}/{{apiversion}}/categorias/ac6c99e0-0759-47c1-89cb-5c6dc6e64853
+Content-type: application/json 
+
+{
+    "id": "ac6c99e0-0759-47c1-89cb-5c6dc6e64852",
+    "nome":"Sala de Estar"
+}
+
+### Deletar Categoria
+DELETE http://{{host}}:{{port}}/{{apiversion}}/categorias/ac6c99e0-0759-47c1-89cb-5c6dc6e64853
