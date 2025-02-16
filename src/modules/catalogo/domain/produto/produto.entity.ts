@@ -1,5 +1,5 @@
 import { Entity } from "@shared/domain/entity";
-import { ProdutoMap } from "@modules/catalogo/mappers/produto.map";
+import { ProdutoMap } from "../../mappers/produto.map";
 import { Categoria } from "../categoria/categoria.entity";
 import { DescricaoProdutoTamanhoMaximoInvalido, DescricaoProdutoTamanhoMinimoInvalido, NomeProdutoTamanhoMaximoInvalido, NomeProdutoTamanhoMinimoInvalido, QtdMaximaCategoriasProdutoInvalida, QtdMinimaCategoriasProdutoInvalida, ValorMinimoProdutoInvalido } from "./produto.exception";
 import { CriarProdutoProps, IProduto, RecuperarProdutoProps } from "./produto.types";
@@ -14,7 +14,10 @@ class Produto extends Entity<IProduto> implements IProduto {
     private _descricao: string;
     private _valor: number;
     private _categorias: Array<Categoria>;
-
+    private _dataCriacao?: Date | undefined; 
+	private _dataAtualizacao?: Date | undefined; 
+	private _dataExclusao?: Date | null | undefined; 
+    
     ///////////////
     //Gets e Sets//
     ///////////////
@@ -82,6 +85,30 @@ class Produto extends Entity<IProduto> implements IProduto {
 
         this._categorias = value;
     }
+
+    public get dataCriacao(): Date | undefined {
+        return this._dataCriacao;
+    }
+
+    private set dataCriacao(value: Date | undefined) {
+        this._dataCriacao = value;
+    }
+
+    public get dataAtualizacao(): Date | undefined {
+        return this._dataAtualizacao;
+    }
+
+    private set dataAtualizacao(value: Date | undefined) {
+        this._dataAtualizacao = value;
+    }
+
+    public get dataExclusao(): Date | null | undefined {
+        return this._dataExclusao;
+    }
+
+    private set dataExclusao(value: Date | null | undefined) {
+        this._dataExclusao = value;
+    }
     
     //////////////
     //Construtor//
@@ -93,6 +120,9 @@ class Produto extends Entity<IProduto> implements IProduto {
         this.descricao = produto.descricao;
         this.valor = produto.valor;
         this.categorias = produto.categorias;
+        this.dataCriacao = produto.dataCriacao;
+		this.dataAtualizacao = produto.dataAtualizacao;
+		this.dataExclusao = produto.dataExclusao;
     }
 
     /////////////////////////
@@ -115,8 +145,11 @@ class Produto extends Entity<IProduto> implements IProduto {
         return ProdutoMap.toDTO(this);
     }
 
+    public estaDeletado(): boolean {
+        return this.dataExclusao !== null ? true : false;
+    }
+
 
 }
 
 export { Produto };
-

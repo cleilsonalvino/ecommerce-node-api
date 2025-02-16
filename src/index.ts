@@ -62,8 +62,8 @@ async function main() {
     ///////////////////////
     
     // const categoria: Categoria = Categoria.recuperar({
-    //    id: "e4fcdb9f-4345-41f7-b630-13441bc92861",
-    //    nome: "Banho"
+    //    id: "91bb57f2-416c-4ee6-9c1e-86cb9b5c3d04",
+    //    nome: "Cozinha"
     // });     
 
     // const atualizouCategoria: boolean = await categoriaRepo.atualizar(categoria.id,categoria);
